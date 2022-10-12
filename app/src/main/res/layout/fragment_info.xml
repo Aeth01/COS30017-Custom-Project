@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InfoFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/infoNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="@string/name_label"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/infoNameEdit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/infoNameEdit" />
+
+        <EditText
+            android:id="@+id/infoNameEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:text="@string/edittext_default"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/infoLowPriceLabel"
+            app:layout_constraintTop_toBottomOf="@+id/infoHeader"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/infoBrandEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:text="@string/edittext_default"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/infoNameEdit"
+            app:layout_constraintStart_toStartOf="@+id/infoNameEdit"
+            app:layout_constraintTop_toBottomOf="@+id/infoNameEdit"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/infoLowPriceEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Lowest price recorded for item."
+            android:importantForAutofill="no"
+            android:inputType="none|numberDecimal"
+            android:text="@string/edittext_default"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/infoNameEdit"
+            app:layout_constraintStart_toStartOf="@+id/infoNameEdit"
+            app:layout_constraintTop_toBottomOf="@+id/infoBrandEdit"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/infoDateEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="date"
+            android:text="@string/edittext_default"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/infoNameEdit"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/infoNameEdit"
+            app:layout_constraintTop_toBottomOf="@+id/infoLowPriceEdit"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/infoSellerEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:text="@string/edittext_default"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/infoNameEdit"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/infoNameEdit"
+            app:layout_constraintTop_toBottomOf="@+id/infoDateEdit"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/infoHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/item_information"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/infoBrandLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="Brand:"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/infoBrandEdit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/infoBrandEdit" />
+
+        <TextView
+            android:id="@+id/infoLowPriceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="Lowest Price:"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/infoLowPriceEdit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/infoLowPriceEdit" />
+
+        <TextView
+            android:id="@+id/infoSellerLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="Seller:"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/infoSellerEdit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/infoSellerEdit" />
+
+        <TextView
+            android:id="@+id/infoDateLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:lineSpacingExtra="14sp"
+            android:text="Date:"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/infoDateEdit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/infoDateEdit" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
