@@ -61,8 +61,8 @@ class ViewItemsFragment : Fragment() {
     }
 
     fun openItem(item : ItemData) {
-//        val action = ViewItemsFragmentDirections.actionViewItemsFragmentToInfoFragment()
-//        action.item = item
-//        NavHostFragment.findNavController(this).navigate(action)
+        val action = ViewItemsFragmentDirections.actionNavSelectToInfoFragment()
+        action.item = item
+        NavHostFragment.findNavController(this).navigate(action)
     }
 }

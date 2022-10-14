@@ -7,16 +7,17 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.customproject"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildFeatures {
@@ -61,18 +62,19 @@ dependencies {
     // To use Kotlin Symbol Processing (KSP) (replaced with below: https://stackoverflow.com/questions/53823451/could-not-find-method-kapt-for-arguments)
     annotationProcessor("androidx.room:room-compiler:$room_version")
 
-    // optional - RxJava2 support for Room
-    implementation "androidx.room:room-rxjava2:$room_version"
-
-    // optional - RxJava3 support for Room
-    implementation "androidx.room:room-rxjava3:$room_version"
-
-    // optional - Guava support for Room, including Optional and ListenableFuture
-    implementation "androidx.room:room-guava:$room_version"
-
-    // optional - Test helpers
-    testImplementation "androidx.room:room-testing:$room_version"
-
-    // optional - Paging 3 Integration
-    implementation "androidx.room:room-paging:2.5.0-beta01"
+    // below commented out as they caused compilation errors
+//    // optional - RxJava2 support for Room
+//    implementation "androidx.room:room-rxjava2:$room_version"
+//
+//    // optional - RxJava3 support for Room
+//    implementation "androidx.room:room-rxjava3:$room_version"
+//
+//    // optional - Guava support for Room, including Optional and ListenableFuture
+//    implementation "androidx.room:room-guava:$room_version"
+//
+//    // optional - Test helpers
+//    testImplementation "androidx.room:room-testing:$room_version"
+//
+//    // optional - Paging 3 Integration
+//    implementation "androidx.room:room-paging:2.5.0-beta01"
 }
