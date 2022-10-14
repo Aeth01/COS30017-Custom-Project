@@ -16,6 +16,15 @@ class InfoFragment : Fragment() {
     ): View? {
         binding = FragmentInfoBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
+
+        InfoFragmentArgs.fromBundle(requireArguments()).item?.let {
+            binding.infoBrandEdit.setText(it.brand)
+            binding.infoDateEdit.setText(it.date)
+            binding.infoNameEdit.setText(it.name)
+            binding.infoLowPriceEdit.setText(it.price.toString())
+            binding.infoSellerEdit.setText(it.seller)
+        }
+
         return binding.root
     }
 }

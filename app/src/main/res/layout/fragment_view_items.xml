@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/viewItemsHeader"
+            android:id="@+id/viewItemHeader"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Select by Item"
@@ -32,10 +32,10 @@
             android:background="?android:attr/listDivider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewItemsHeader" />
+            app:layout_constraintTop_toBottomOf="@+id/viewItemHeader" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listViewItem"
+            android:id="@+id/viewItemList"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="5dp"
