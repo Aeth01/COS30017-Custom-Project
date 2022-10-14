@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 
 class ViewItemsAdapter(private val data : MutableList<ItemData>,
@@ -28,14 +29,14 @@ class ViewItemsAdapter(private val data : MutableList<ItemData>,
     }
 
     inner class Holder(private val v : View) : RecyclerView.ViewHolder(v) {
-        val nameView = v.findViewById<TextView>(R.id.itemRowName)
-        val priceView = v.findViewById<TextView>(R.id.itemRowPrice)
-        val dateView = v.findViewById<TextView>(R.id.itemRowDate)
+        private val nameView = v.findViewById<TextView>(R.id.itemRowName)
+        private val priceView = v.findViewById<TextView>(R.id.itemRowPrice)
+        private val dateView = v.findViewById<TextView>(R.id.itemRowDate)
 
         fun bind(item : ItemData) {
             nameView.text = item.name
             priceView.text = item.price.toString()
-            dateView.text = item.date.toString()
+            dateView.text = item.date
 
             v.setOnClickListener {
                 listener(item)
@@ -44,8 +45,10 @@ class ViewItemsAdapter(private val data : MutableList<ItemData>,
 
         fun setBackgroundColour(position : Int) {
             if (position % 2 == 0) {
-                v.setBackgroundColor(v.resources.getColor(R.color.rowColorDefault))
-                v.setBackgroundColor(v.resources.getColor(R.color.rowColorAlternate))
+                v.setBackgroundColor(ResourcesCompat.getColor(v.resources, R.color.rowColorDefault, v.context.theme))
+            }
+            else {
+                v.setBackgroundColor(ResourcesCompat.getColor(v.resources, R.color.rowColorAlternate, v.context.theme))
             }
         }
     }

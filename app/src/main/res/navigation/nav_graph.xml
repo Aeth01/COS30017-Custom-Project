@@ -3,26 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/viewItemsFragment">
+    app:startDestination="@id/nav_home">
 
     <fragment
-        android:id="@+id/statisticsFragment"
+        android:id="@+id/nav_home"
         android:name="com.example.customproject.StatisticsFragment"
-        android:label="fragment_statistics"
+        android:label="Home"
         tools:layout="@layout/fragment_statistics" />
     <fragment
-        android:id="@+id/viewItemsFragment"
+        android:id="@+id/nav_select"
         android:name="com.example.customproject.ViewItemsFragment"
-        android:label="fragment_view_items"
-        tools:layout="@layout/fragment_view_items" >
-        <action
-            android:id="@+id/action_viewItemsFragment_to_infoFragment"
-            app:destination="@id/infoFragment" />
-    </fragment>
+        android:label="Select Item"
+        tools:layout="@layout/fragment_view_items" />
     <fragment
         android:id="@+id/infoFragment"
         android:name="com.example.customproject.InfoFragment"
-        android:label="fragment_info"
+        android:label="Item Information"
         tools:layout="@layout/fragment_info">
 
         <argument
