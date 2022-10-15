@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         // init database
-        (this.application as DatabaseApplication).database
+//        (this.application as DatabaseApplication).database.itemDao().getAll()
     }
 
     override fun onSupportNavigateUp() : Boolean {
