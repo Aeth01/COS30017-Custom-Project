@@ -4,11 +4,12 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface BrandDao {
-    @Query("SELECT * FROM brand_table")
-    fun getAll() : List<BrandItem>
+    @Query("SELECT * FROM brand_table ORDER BY brandId ASC")
+    fun getAll() : Flow<List<BrandItem>>
 
     @Query("SELECT * FROM brand_table WHERE brandId=(:id)")
     fun getBrandById(id : Int) : List<BrandItem>

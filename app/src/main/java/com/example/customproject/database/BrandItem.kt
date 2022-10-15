@@ -6,6 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName="brand_table")
 data class BrandItem(
-    @PrimaryKey(autoGenerate = true) val brandId : Int,
+    @PrimaryKey(autoGenerate = true) val brandId : Int = 0,
     @ColumnInfo(name="brand_name") val name : String
 )

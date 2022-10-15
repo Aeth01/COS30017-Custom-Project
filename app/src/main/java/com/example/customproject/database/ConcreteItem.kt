@@ -15,7 +15,7 @@ import androidx.room.PrimaryKey
     )]
 )
 data class ConcreteItem(
-    @PrimaryKey(autoGenerate = true) val itemId : Int,
+    @PrimaryKey(autoGenerate = true) val itemId : Int = 0,
     @ColumnInfo(name="item_name") val name : String,
     @ColumnInfo(name="brand_id", index = true) val brand : Int? = null,
     @ColumnInfo(name="price") val price : Float,

@@ -9,8 +9,12 @@
             android:icon="@drawable/home"
             android:title="Home" />
         <item
-            android:id="@+id/nav_select"
+            android:id="@+id/nav_select_item"
             android:icon="@drawable/tables"
-            android:title="Select" />
+            android:title="Select Item" />
+        <item
+            android:id="@+id/nav_select_brand"
+            android:icon="@drawable/tables"
+            android:title="Select Item" />
     </group>
 </menu>
