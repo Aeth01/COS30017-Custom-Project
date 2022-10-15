@@ -1,11 +1,12 @@
 package com.example.customproject.database
 
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ConcreteItemDao {
-    @Query("SELECT * FROM item_table")
-    fun getAll() : List<ConcreteItem>
+    @Query("SELECT * FROM item_table ORDER BY date DESC")
+    fun getAll() : Flow<List<ConcreteItem>>
 
     @Query("SELECT * FROM item_table WHERE itemId=(:id)")
     fun getById(id : Int): List<ConcreteItem>
