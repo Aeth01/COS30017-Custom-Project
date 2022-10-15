@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName="brand_table")
 data class BrandItem(
     @PrimaryKey val brandId : Int,
     @ColumnInfo(name="brand_name") val name : String

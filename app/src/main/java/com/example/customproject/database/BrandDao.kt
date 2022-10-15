@@ -7,13 +7,13 @@ import androidx.room.Query
 
 @Dao
 interface BrandDao {
-    @Query("SELECT * FROM branditem")
+    @Query("SELECT * FROM brand_table")
     fun getAll() : List<BrandItem>
 
-    @Query("SELECT * FROM branditem WHERE brandId=(:id)")
+    @Query("SELECT * FROM brand_table WHERE brandId=(:id)")
     fun getBrandById(id : Int) : List<BrandItem>
 
-    @Query("UPDATE branditem SET brand_name=(:name) WHERE brandId=(:id)")
+    @Query("UPDATE brand_table SET brand_name=(:name) WHERE brandId=(:id)")
     fun updateById(id : Int, name : String)
 
     @Insert
