@@ -11,11 +11,11 @@ interface ConcreteItemDao {
     fun getById(id : Int): List<ConcreteItem>
 
     @Query("UPDATE item_table SET item_name=(:name), brand_id=(:brandId), price=(:price), date=(:date), seller=(:seller) WHERE itemId=(:id)")
-    fun updateById(id : Int, name : String, brandId : Int, price : Float, date : String, seller : String)
+    suspend fun updateById(id : Int, name : String, brandId : Int, price : Float, date : String, seller : String)
 
     @Insert
-    fun insertAll(vararg users : ConcreteItem)
+    suspend fun insertAll(vararg users : ConcreteItem)
 
     @Delete
-    fun delete(item : ConcreteItem)
+    suspend fun delete(item : ConcreteItem)
 }

@@ -14,11 +14,11 @@ interface BrandDao {
     fun getBrandById(id : Int) : List<BrandItem>
 
     @Query("UPDATE brand_table SET brand_name=(:name) WHERE brandId=(:id)")
-    fun updateById(id : Int, name : String)
+    suspend fun updateById(id : Int, name : String)
 
     @Insert
-    fun insertAll(vararg brandItem : BrandItem)
+    suspend fun insertAll(vararg brandItem : BrandItem)
 
     @Delete
-    fun delete(brand : BrandItem)
+    suspend fun delete(brand : BrandItem)
 }
