@@ -28,11 +28,16 @@
         android:label="Item Information"
         tools:layout="@layout/fragment_info">
 
+<!--        <argument-->
+<!--            android:name="item"-->
+<!--            android:defaultValue="@null"-->
+<!--            app:nullable="true"-->
+<!--            app:argType="com.example.customproject.database.ConcreteItem"/>-->
         <argument
             android:name="item"
-            android:defaultValue="@null"
+            app:argType="com.example.customproject.database.ConcreteItem"
             app:nullable="true"
-            app:argType="com.example.customproject.ItemData" />
+            android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/addItemFragment"

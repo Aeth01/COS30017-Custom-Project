@@ -22,7 +22,7 @@ class ViewItemsFragment : Fragment() {
     private lateinit var binding : FragmentViewItemsBinding
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var adapter : ViewItemsAdapter
-    private lateinit var data : MutableList<ItemData>
+    private lateinit var data : LiveData<List<ConcreteItem>>
 
     private val viewModel : ViewItemsViewModel by activityViewModels {
         ViewItemsViewModelFactory(
@@ -40,12 +40,16 @@ class ViewItemsFragment : Fragment() {
         linearLayoutManager = LinearLayoutManager(context)
         itemListView.layoutManager = linearLayoutManager
 
-        data = initData()
+//        data = viewModel.getRows().asLiveData()
 
-        adapter = ViewItemsAdapter(data) {
+        adapter = ViewItemsAdapter() {
             openItem(it)
         }
         itemListView.adapter = adapter
+
+        viewModel.getRows().asLiveData().observe(viewLifecycleOwner, Observer {
+            adapter.updateData(it)
+        })
 
         binding.fabAddItem.setOnClickListener{
             val action = ViewItemsFragmentDirections.actionNavSelectToAddItemFragment()
@@ -55,30 +59,30 @@ class ViewItemsFragment : Fragment() {
         return binding.root
     }
 
-    private fun initData() : MutableList<ItemData> {
-        val ret = mutableListOf<ItemData>()
+//    private fun initData() : MutableList<ItemData> {
+//        val ret = mutableListOf<ItemData>()
+//
+//        val rows : LiveData<List<ConcreteItem>> = viewModel.getRows().asLiveData()
+//        rows.observe(viewLifecycleOwner, Observer{ rows ->
+//            rows?.let {
+//                for(row in it) {
+//                    data.add(
+//                        ItemData(
+//                        row.name,
+//                        row.brand.toString(),
+//                        row.price,
+//                        row.date,
+//                        row.seller
+//                    )
+//                    )
+//                }
+//            }
+//        })
+//
+//        return ret
+//    }
 
-        val rows : LiveData<List<ConcreteItem>> = viewModel.getRows().asLiveData()
-        rows.observe(viewLifecycleOwner, Observer{ rows ->
-            rows?.let {
-                for(row in it) {
-                    data.add(
-                        ItemData(
-                        row.name,
-                        row.brand.toString(),
-                        row.price,
-                        row.date,
-                        row.seller
-                    )
-                    )
-                }
-            }
-        })
-
-        return ret
-    }
-
-    private fun openItem(item : ItemData) {
+    private fun openItem(item : ConcreteItem) {
         val action = ViewItemsFragmentDirections.actionNavSelectToInfoFragment()
         action.item = item
         NavHostFragment.findNavController(this).navigate(action)

@@ -18,7 +18,7 @@ class InfoFragment : Fragment() {
         // Inflate the layout for this fragment
 
         InfoFragmentArgs.fromBundle(requireArguments()).item?.let {
-            binding.infoBrandEdit.setText(it.brand)
+            binding.infoBrandEdit.setText(it.brand.toString())
             binding.infoDateEdit.setText(it.date)
             binding.infoNameEdit.setText(it.name)
             binding.infoLowPriceEdit.setText(it.price.toString())

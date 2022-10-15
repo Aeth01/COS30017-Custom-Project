@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.customproject.database.ConcreteItem
 
-class ViewItemsAdapter(private val data : MutableList<ItemData>,
-                       private val listener : (ItemData) -> Unit) : RecyclerView.Adapter<ViewItemsAdapter.Holder>() {
+class ViewItemsAdapter(private val listener : (ConcreteItem) -> Unit) : RecyclerView.Adapter<ViewItemsAdapter.Holder>() {
+    val data = mutableListOf<ConcreteItem>()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         // get row template for view holder
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -28,12 +30,18 @@ class ViewItemsAdapter(private val data : MutableList<ItemData>,
         holder.bind(item)
     }
 
+    fun updateData(newData : List<ConcreteItem>) {
+        data.clear()
+        data.addAll(newData)
+        notifyDataSetChanged()
+    }
+
     inner class Holder(private val v : View) : RecyclerView.ViewHolder(v) {
         private val nameView = v.findViewById<TextView>(R.id.itemRowName)
         private val priceView = v.findViewById<TextView>(R.id.itemRowPrice)
         private val dateView = v.findViewById<TextView>(R.id.itemRowDate)
 
-        fun bind(item : ItemData) {
+        fun bind(item : ConcreteItem) {
             nameView.text = item.name
             priceView.text = item.price.toString()
             dateView.text = item.date
