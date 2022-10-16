@@ -15,7 +15,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Select by Item"
-            android:textAlignment="center"
+            android:gravity="center"
             android:textSize="34sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
