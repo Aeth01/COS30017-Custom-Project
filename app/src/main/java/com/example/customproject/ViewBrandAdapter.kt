@@ -40,7 +40,7 @@ class ViewBrandAdapter(private val listener : (BrandItem) -> Unit) : RecyclerVie
         private val brandName = v.findViewById<TextView>(R.id.brandRowName)
 
         fun bind(item : BrandItem) {
-            brandName.text = item.name
+            brandName.text = item.brandName
 
             v.setOnClickListener{
                 listener(item)

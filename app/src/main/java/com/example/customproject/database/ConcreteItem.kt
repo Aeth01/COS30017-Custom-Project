@@ -12,15 +12,16 @@ import kotlinx.parcelize.Parcelize
     tableName="item_table",
     foreignKeys = [ForeignKey(
         entity = BrandItem::class,
-        parentColumns = arrayOf("brandId"),
-        childColumns = arrayOf("brand_id"),
-        onDelete = ForeignKey.SET_NULL
+        parentColumns = arrayOf("brandName"),
+        childColumns = arrayOf("brandName"),
+        onDelete = ForeignKey.SET_NULL,
+        onUpdate = ForeignKey.CASCADE
     )]
 )
 data class ConcreteItem(
     @PrimaryKey(autoGenerate = true) val itemId : Int = 0,
     @ColumnInfo(name="item_name") val name : String,
-    @ColumnInfo(name="brand_id", index = true) val brand : Int? = null,
+    @ColumnInfo(name="brandName", index = true) val brand : String = "",
     @ColumnInfo(name="price") val price : Float,
     @ColumnInfo(name="date") val date : String,
     @ColumnInfo(name="seller") val seller : String

@@ -63,7 +63,7 @@ class ViewBrandFragment : Fragment() {
         rows.observe(viewLifecycleOwner, Observer{ rows ->
             rows?.let {
                 for(row in it) {
-                    data.add(BrandItem(row.brandId, row.name))
+                    data.add(BrandItem(row.brandName))
                 }
             }
         })

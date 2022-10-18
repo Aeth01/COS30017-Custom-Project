@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.customproject.database.BrandItem
 import com.example.customproject.databinding.FragmentAddBrandBinding
 import com.example.customproject.databinding.FragmentAddItemBinding
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class AddBrandFragment : Fragment() {
     private lateinit var binding : FragmentAddBrandBinding
@@ -35,14 +35,10 @@ class AddBrandFragment : Fragment() {
                     .trim()
                     .toString()
         if (name != "") {
-            if (isUniqueBrand(name)) {
-                this.lifecycleScope.launch{
-                    (activity?.application as DatabaseApplication).database.brandDao().insertAll(BrandItem(name="$name"))
-                    Toast.makeText(context, "Added $name to Brands.", Toast.LENGTH_SHORT).show()
-                }
-            }
-            else {
-                toastMsg = "$name already exists in brands."
+            this.lifecycleScope.launch {
+                (activity?.application as DatabaseApplication).database.brandDao()
+                    .insertAll(BrandItem(brandName = "$name"))
+                toastMsg = "Added $name to Brands.";
             }
         }
         else {
@@ -50,11 +46,5 @@ class AddBrandFragment : Fragment() {
         }
 
         Toast.makeText(context, toastMsg, Toast.LENGTH_SHORT).show()
-    }
-
-    private fun isUniqueBrand(name : String) : Boolean {
-        val list = (activity?.application as DatabaseApplication).database.brandDao().getBrandByName(name)
-
-        return !list.isEmpty()
     }
 }

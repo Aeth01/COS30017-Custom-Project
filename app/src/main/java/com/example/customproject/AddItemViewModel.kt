@@ -8,8 +8,8 @@ import kotlinx.coroutines.launch
 
 class AddItemViewModel(private val concreteItemDao: ConcreteItemDao) : ViewModel() {
     // add item to table from item details
-    fun addNewItem(itemName : String, brandId : Int, itemPrice : Float, priceDate : String, itemSeller : String) {
-        val newConcreteItem = getNewItem(itemName, brandId, itemPrice, priceDate, itemSeller)
+    fun addNewItem(itemName : String, brandName : String, itemPrice : Float, priceDate : String, itemSeller : String) {
+        val newConcreteItem = getNewItem(itemName, brandName, itemPrice, priceDate, itemSeller)
         insertItem(newConcreteItem)
     }
 
@@ -22,10 +22,10 @@ class AddItemViewModel(private val concreteItemDao: ConcreteItemDao) : ViewModel
     }
 
     // return new instance of row
-    private fun getNewItem(itemName : String, brandId : Int, itemPrice : Float, priceDate : String, itemSeller : String) : ConcreteItem {
+    private fun getNewItem(itemName : String, brandName : String, itemPrice : Float, priceDate : String, itemSeller : String) : ConcreteItem {
         return ConcreteItem(
             name=itemName,
-            brand=brandId,
+            brand=brandName,
             price=itemPrice,
             date=priceDate,
             seller=itemSeller)

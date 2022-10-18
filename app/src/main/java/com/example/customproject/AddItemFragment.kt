@@ -39,7 +39,7 @@ class AddItemFragment : Fragment() {
 
     private fun addItem() {
         val nameVal = binding.addItemName.text.toString()
-        val brandVal = binding.addItemBrand.text.toString().toInt()
+        val brandVal = binding.addItemBrand.text.toString()
         val priceVal = binding.addItemPrice.text.toString().toFloat()
         val dateVal = binding.addItemDate.text.toString()
         val sellerVal = binding.addItemSeller.text.toString()
