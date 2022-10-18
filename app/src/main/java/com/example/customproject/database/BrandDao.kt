@@ -14,6 +14,9 @@ interface BrandDao {
     @Query("SELECT * FROM brand_table WHERE brandId=(:id)")
     fun getBrandById(id : Int) : List<BrandItem>
 
+    @Query("SELECT * FROM brand_table WHERE brand_name=(:name)")
+    fun getBrandByName(name : String) : List<BrandItem>
+
     @Query("UPDATE brand_table SET brand_name=(:name) WHERE brandId=(:id)")
     suspend fun updateById(id : Int, name : String)
 

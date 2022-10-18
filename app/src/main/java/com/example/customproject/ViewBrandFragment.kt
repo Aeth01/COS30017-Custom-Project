@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.asLiveData
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.customproject.database.BrandItem
 import com.example.customproject.databinding.FragmentViewBrandBinding
@@ -38,15 +39,19 @@ class ViewBrandFragment : Fragment() {
 
         data = initData()
 
-        adapter = ViewBrandAdapter(data) {
+        adapter = ViewBrandAdapter() {
             openBrand(it)
         }
         itemListView.adapter = adapter
 
         binding.fabAddBrand.setOnClickListener{
-//            val action = ViewItemsFragmentDirections.actionNavSelectToAddItemFragment()
-//            NavHostFragment.findNavController(this).navigate(action)
+            val action = ViewBrandFragmentDirections.actionNavSelectBrandToAddBrandFragment()
+            NavHostFragment.findNavController(this).navigate(action)
         }
+
+        viewModel.getRows().asLiveData().observe(viewLifecycleOwner, Observer {
+            adapter.updateData(it)
+        })
 
         return binding.root
     }
@@ -67,6 +72,8 @@ class ViewBrandFragment : Fragment() {
     }
 
     private fun openBrand(item : BrandItem) {
-
+//        val action = ViewBrandFragmentDirections.actionNavSelectBrandToAddBrandFragment()
+//        action.item = item
+//        NavHostFragment.findNavController(this).navigate(action)
     }
 }

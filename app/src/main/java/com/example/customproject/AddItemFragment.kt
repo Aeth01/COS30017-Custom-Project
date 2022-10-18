@@ -34,12 +34,6 @@ class AddItemFragment : Fragment() {
             addItem()
         }
 
-        binding.addItemBrandSubmit.setOnClickListener{
-            this.lifecycleScope.launch{
-                (activity?.application as DatabaseApplication).database.brandDao().insertAll(BrandItem(name="Nvidia"))
-            }
-        }
-
         return binding.root
     }
 

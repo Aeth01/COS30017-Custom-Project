@@ -7,9 +7,11 @@ import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.customproject.database.BrandItem
+import com.example.customproject.database.ConcreteItem
 
-class ViewBrandAdapter(private val data : MutableList<BrandItem>,
-                       private val listener : (BrandItem) -> Unit) : RecyclerView.Adapter<ViewBrandAdapter.Holder>() {
+class ViewBrandAdapter(private val listener : (BrandItem) -> Unit) : RecyclerView.Adapter<ViewBrandAdapter.Holder>() {
+    val data = mutableListOf<BrandItem>()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         // get row template for view holder
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -26,6 +28,12 @@ class ViewBrandAdapter(private val data : MutableList<BrandItem>,
         val item = data[position]
         holder.setBackgroundColour(position)
         holder.bind(item)
+    }
+
+    fun updateData(newData : List<BrandItem>) {
+        data.clear()
+        data.addAll(newData)
+        notifyDataSetChanged()
     }
 
     inner class Holder(private val v : View) : RecyclerView.ViewHolder(v) {

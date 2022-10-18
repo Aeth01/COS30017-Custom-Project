@@ -52,5 +52,18 @@
         android:id="@+id/nav_select_brand"
         android:name="com.example.customproject.ViewBrandFragment"
         android:label="fragment_view_brand"
-        tools:layout="@layout/fragment_view_brand" />
+        tools:layout="@layout/fragment_view_brand" >
+        <action
+            android:id="@+id/action_nav_select_brand_to_addBrandFragment"
+            app:destination="@id/addBrandFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addBrandFragment"
+        android:name="com.example.customproject.AddBrandFragment"
+        android:label="fragment_add_brand"
+        tools:layout="@layout/fragment_add_brand" >
+        <action
+            android:id="@+id/action_addBrandFragment_to_nav_select_brand"
+            app:destination="@id/nav_select_brand" />
+    </fragment>
 </navigation>
