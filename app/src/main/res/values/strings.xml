@@ -10,4 +10,7 @@
     <string name="item_information">Item Information</string>
     <string name="name_label">Name:</string>
     <string name="edittext_default">EditText</string>
+    <string name="menuViewAll">View All Items</string>
+    <string name="menuViewBrands">View Brands</string>
+    <string name="menuHome">Home</string>
 </resources>

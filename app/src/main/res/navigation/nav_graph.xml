@@ -21,6 +21,11 @@
         <action
             android:id="@+id/action_nav_select_to_addItemFragment"
             app:destination="@id/addItemFragment" />
+        <argument
+            android:name="brandItem"
+            app:argType="com.example.customproject.database.BrandItem"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
@@ -56,6 +61,9 @@
         <action
             android:id="@+id/action_nav_select_brand_to_addBrandFragment"
             app:destination="@id/addBrandFragment" />
+        <action
+            android:id="@+id/action_nav_select_brand_to_nav_select_item2"
+            app:destination="@id/nav_select_item" />
     </fragment>
     <fragment
         android:id="@+id/addBrandFragment"

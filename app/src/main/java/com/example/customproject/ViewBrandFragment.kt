@@ -72,8 +72,8 @@ class ViewBrandFragment : Fragment() {
     }
 
     private fun openBrand(item : BrandItem) {
-//        val action = ViewBrandFragmentDirections.actionNavSelectBrandToAddBrandFragment()
-//        action.item = item
-//        NavHostFragment.findNavController(this).navigate(action)
+        val action = ViewBrandFragmentDirections.actionNavSelectBrandToNavSelectItem2()
+        action.brandItem = item
+        NavHostFragment.findNavController(this).navigate(action)
     }
 }

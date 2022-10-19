@@ -40,21 +40,6 @@
             tools:ignore="TouchTargetSizeCheck" />
 
         <EditText
-            android:id="@+id/infoBrandEdit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:text="@string/edittext_default"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/infoNameEdit"
-            app:layout_constraintStart_toStartOf="@+id/infoNameEdit"
-            app:layout_constraintTop_toBottomOf="@+id/infoNameEdit"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <EditText
             android:id="@+id/infoLowPriceEdit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -67,7 +52,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/infoNameEdit"
             app:layout_constraintStart_toStartOf="@+id/infoNameEdit"
-            app:layout_constraintTop_toBottomOf="@+id/infoBrandEdit"
+            app:layout_constraintTop_toBottomOf="@+id/infoBrandSpinner"
             tools:ignore="TouchTargetSizeCheck" />
 
         <EditText
@@ -120,9 +105,9 @@
             android:gravity="center"
             android:text="Brand:"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/infoBrandEdit"
+            app:layout_constraintBottom_toBottomOf="@+id/infoBrandSpinner"
             app:layout_constraintStart_toStartOf="@+id/infoNameLabel"
-            app:layout_constraintTop_toTopOf="@+id/infoBrandEdit" />
+            app:layout_constraintTop_toTopOf="@+id/infoBrandSpinner" />
 
         <TextView
             android:id="@+id/infoLowPriceLabel"
@@ -157,6 +142,18 @@
             app:layout_constraintBottom_toBottomOf="@+id/infoDateEdit"
             app:layout_constraintStart_toStartOf="@+id/infoNameLabel"
             app:layout_constraintTop_toTopOf="@+id/infoDateEdit" />
+
+        <Spinner
+            android:id="@+id/infoBrandSpinner"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="261dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="10dp"
+            app:barrierMargin="@dimen/material_emphasis_medium"
+            app:layout_constraintEnd_toEndOf="@+id/infoSellerEdit"
+            app:layout_constraintStart_toStartOf="@+id/infoSellerEdit"
+            app:layout_constraintTop_toBottomOf="@+id/infoNameEdit"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

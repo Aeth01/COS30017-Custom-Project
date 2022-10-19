@@ -2,6 +2,7 @@ package com.example.customproject
 
 import android.content.ClipData
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -22,7 +23,6 @@ class ViewItemsFragment : Fragment() {
     private lateinit var binding : FragmentViewItemsBinding
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var adapter : ViewItemsAdapter
-    private lateinit var data : LiveData<List<ConcreteItem>>
 
     private val viewModel : ViewItemsViewModel by activityViewModels {
         ViewItemsViewModelFactory(
@@ -40,14 +40,24 @@ class ViewItemsFragment : Fragment() {
         linearLayoutManager = LinearLayoutManager(context)
         itemListView.layoutManager = linearLayoutManager
 
-//        data = viewModel.getRows().asLiveData()
-
         adapter = ViewItemsAdapter() {
             openItem(it)
         }
         itemListView.adapter = adapter
 
-        viewModel.getRows().asLiveData().observe(viewLifecycleOwner, Observer {
+        var brand : String? = null
+        ViewItemsFragmentArgs.fromBundle(requireArguments()).brandItem?.let {
+            brand = it.brandName
+        }
+
+        val databaseData = if (brand.isNullOrEmpty()) {
+            viewModel.getRows().asLiveData()
+        }
+        else {
+            viewModel.getByBrand(brand!!).asLiveData()
+        }
+
+        databaseData.observe(viewLifecycleOwner, Observer {
             adapter.updateData(it)
         })
 
@@ -56,33 +66,18 @@ class ViewItemsFragment : Fragment() {
             NavHostFragment.findNavController(this).navigate(action)
         }
 
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<ConcreteItem>("changedItem")?.observe(viewLifecycleOwner) {
+            viewModel.updateById(it.itemId, it.name, it.brand, it.price, it.date, it.seller)
+            Log.e("openItem", "Updated item to $it")
+        }
+
         return binding.root
     }
 
-//    private fun initData() : MutableList<ItemData> {
-//        val ret = mutableListOf<ItemData>()
-//
-//        val rows : LiveData<List<ConcreteItem>> = viewModel.getRows().asLiveData()
-//        rows.observe(viewLifecycleOwner, Observer{ rows ->
-//            rows?.let {
-//                for(row in it) {
-//                    data.add(
-//                        ItemData(
-//                        row.name,
-//                        row.brand.toString(),
-//                        row.price,
-//                        row.date,
-//                        row.seller
-//                    )
-//                    )
-//                }
-//            }
-//        })
-//
-//        return ret
-//    }
-
     private fun openItem(item : ConcreteItem) {
+        viewModel.clickedIndex = item.itemId
+        Log.e("openItem", "clickedIndex = ${item.itemId}")
+
         val action = ViewItemsFragmentDirections.actionNavSelectToInfoFragment()
         action.item = item
         NavHostFragment.findNavController(this).navigate(action)

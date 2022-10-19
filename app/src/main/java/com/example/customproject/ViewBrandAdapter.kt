@@ -49,10 +49,10 @@ class ViewBrandAdapter(private val listener : (BrandItem) -> Unit) : RecyclerVie
 
         fun setBackgroundColour(position : Int) {
             if (position % 2 == 0) {
-                v.setBackgroundColor(ResourcesCompat.getColor(v.resources, R.color.rowColorDefault, v.context.theme))
+                v.setBackgroundColor(ResourcesCompat.getColor(v.resources, R.color.primaryRowColor, v.context.theme))
             }
             else {
-                v.setBackgroundColor(ResourcesCompat.getColor(v.resources, R.color.rowColorAlternate, v.context.theme))
+                v.setBackgroundColor(ResourcesCompat.getColor(v.resources, R.color.secondaryRowColor, v.context.theme))
             }
         }
     }

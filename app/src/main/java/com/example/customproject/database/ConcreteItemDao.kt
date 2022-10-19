@@ -11,8 +11,11 @@ interface ConcreteItemDao {
     @Query("SELECT * FROM item_table WHERE itemId=(:id)")
     fun getById(id : Int): List<ConcreteItem>
 
+    @Query("SELECT * FROM item_table WHERE brandName=(:brandId)")
+    fun getByBrand(brandId : String) : Flow<List<ConcreteItem>>
+
     @Query("UPDATE item_table SET item_name=(:name), brandName=(:brandId), price=(:price), date=(:date), seller=(:seller) WHERE itemId=(:id)")
-    suspend fun updateById(id : Int, name : String, brandId : Int, price : Float, date : String, seller : String)
+    suspend fun updateById(id : Int, name : String, brandId : String, price : Float, date : String, seller : String)
 
     @Insert
     suspend fun insertAll(vararg users : ConcreteItem)
