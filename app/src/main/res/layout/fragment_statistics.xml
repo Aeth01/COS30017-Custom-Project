@@ -74,6 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="@string/textview_default"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/statsNoCardsLabel"
             app:layout_constraintStart_toEndOf="@+id/statsNoCardsLabel"
             app:layout_constraintTop_toTopOf="@+id/statsNoCardsLabel" />
@@ -83,6 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textview_default"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/statsLastAddedLabel"
             app:layout_constraintStart_toStartOf="@+id/statsNoCards"
             app:layout_constraintTop_toTopOf="@+id/statsLastAddedLabel" />
@@ -92,6 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textview_default"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/statsAveragePriceLabel"
             app:layout_constraintStart_toStartOf="@+id/statsNoCards"
             app:layout_constraintTop_toTopOf="@+id/statsAveragePriceLabel" />
