@@ -1,6 +1,7 @@
 package com.example.customproject
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.NavHostFragment
 import com.example.customproject.database.BrandItem
 import com.example.customproject.databinding.FragmentAddBrandBinding
 import com.example.customproject.databinding.FragmentAddItemBinding
@@ -25,6 +27,7 @@ class AddBrandFragment : Fragment() {
         binding = FragmentAddBrandBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[AddBrandViewModel::class.java]
 
+        // add brand to database on submit
         binding.addBrandSubmit.setOnClickListener{
             addBrand()
         }
@@ -32,23 +35,32 @@ class AddBrandFragment : Fragment() {
         return binding.root
     }
 
+    // add brand to database
     private fun addBrand() {
-        var toastMsg = ""
+        // get brand name from edit text
         val name = binding.addBrandName.text
                     .trim()
                     .toString()
-        if (name != "") {
+
+        Log.e("AddBrand", "name=$name")
+
+        if (name.isNotEmpty()) {
             this.lifecycleScope.launch {
                 (activity?.application as DatabaseApplication).database.brandDao()
                     .insertAll(BrandItem(brandName = "$name"))
             }
-            toastMsg = "Added $name to Brands.";
+            Toast.makeText(context, "Added $name to brands.", Toast.LENGTH_SHORT).show()
+            returnToViewBrands()
         }
         else {
-            toastMsg = "Please ensure name is not blank."
+            Toast.makeText(context, "Please ensure name is not blank.", Toast.LENGTH_SHORT).show()
         }
+    }
 
-        Toast.makeText(context, toastMsg, Toast.LENGTH_SHORT).show()
+    // return to view brand fragment
+    private fun returnToViewBrands() {
+        val action = AddBrandFragmentDirections.actionAddBrandFragmentToNavSelectBrand()
+        NavHostFragment.findNavController(this).navigate(action)
     }
 
     override fun onPause() {

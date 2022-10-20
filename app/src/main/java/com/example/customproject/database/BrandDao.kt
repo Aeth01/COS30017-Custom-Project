@@ -14,7 +14,7 @@ interface BrandDao {
     @Query("UPDATE brand_table SET brandName=(:name) WHERE brandName=(:name)")
     suspend fun updateById(name : String)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAll(vararg brandItem : BrandItem)
 
     @Delete

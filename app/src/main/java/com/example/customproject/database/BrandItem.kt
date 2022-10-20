@@ -11,3 +11,16 @@ import kotlinx.parcelize.Parcelize
 data class BrandItem(
     @PrimaryKey val brandName : String = "",
 ) : Parcelable
+{
+    companion object {
+        fun brandItemListToStringList(list : List<BrandItem>) : List<String> {
+            val ret = mutableListOf<String>()
+
+            for(item in list) {
+                ret.add(item.brandName)
+            }
+
+            return ret
+        }
+    }
+}

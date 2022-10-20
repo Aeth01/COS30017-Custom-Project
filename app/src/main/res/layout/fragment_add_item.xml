@@ -100,19 +100,6 @@
             tools:ignore="TouchTargetSizeCheck" />
 
         <EditText
-            android:id="@+id/addItemBrand"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Brand"
-            app:layout_constraintBottom_toBottomOf="@+id/textView4"
-            app:layout_constraintEnd_toEndOf="@+id/addItemName"
-            app:layout_constraintStart_toStartOf="@+id/addItemName"
-            app:layout_constraintTop_toTopOf="@+id/textView4"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <EditText
             android:id="@+id/addItemSeller"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -144,8 +131,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Price"
+            android:inputType="number"
+            android:text="0.0"
             app:layout_constraintBottom_toBottomOf="@+id/textView5"
             app:layout_constraintEnd_toEndOf="@+id/addItemName"
             app:layout_constraintStart_toStartOf="@+id/addItemName"
@@ -162,6 +149,18 @@
             app:layout_constraintEnd_toEndOf="@+id/addItemSeller"
             app:layout_constraintStart_toStartOf="@+id/textView7"
             app:layout_constraintTop_toBottomOf="@+id/addItemSeller" />
+
+        <Spinner
+            android:id="@+id/addItemBrand"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView4"
+            app:layout_constraintEnd_toEndOf="@+id/addItemName"
+            app:layout_constraintStart_toStartOf="@+id/addItemName"
+            app:layout_constraintTop_toTopOf="@+id/textView4"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

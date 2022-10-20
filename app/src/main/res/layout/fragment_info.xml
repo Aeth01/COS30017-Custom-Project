@@ -48,7 +48,7 @@
             android:hint="Lowest price recorded for item."
             android:importantForAutofill="no"
             android:inputType="none|numberDecimal"
-            android:text="@string/edittext_default"
+            android:text="0.0"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/infoNameEdit"
             app:layout_constraintStart_toStartOf="@+id/infoNameEdit"

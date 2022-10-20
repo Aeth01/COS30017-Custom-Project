@@ -25,7 +25,6 @@ import com.example.customproject.databinding.FragmentInfoBinding
 class InfoFragment : Fragment() {
     private lateinit var binding : FragmentInfoBinding
     private lateinit var spinnerAdapter : ArrayAdapter<String>
-    private var changedVariable = false
 
     private val viewModel : InfoViewModel by activityViewModels {
         InfoViewModelFactory(
@@ -40,32 +39,50 @@ class InfoFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentInfoBinding.inflate(inflater, container, false)
 
+        // attach spinner data adapter to spinner view
         spinnerAdapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, ArrayList<String>())
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.infoBrandSpinner.adapter = spinnerAdapter
 
-        getSpinnerItems()
+        populateSpinnerItems()
 
+        // get item data and populate view model and views
         InfoFragmentArgs.fromBundle(requireArguments()).item?.let {
             viewModel.setVariables(it)
+            setViewValues()
         }
 
-        setViewValues()
+        setTextChangedListeners()
+
+        return binding.root
+    }
+
+    // populate spinner with brand names from database
+    private fun populateSpinnerItems() {
+        viewModel.getBrands().asLiveData().observe(viewLifecycleOwner, Observer {
+            spinnerAdapter.addAll(BrandItem.brandItemListToStringList(it))
+            binding.infoBrandSpinner.setSelection(getBrandIndex(viewModel.brand!!))
+        })
+    }
+
+    // set text changed listeners for views
+    private fun setTextChangedListeners() {
+        val sharedTextWatcher = getTextWatcher()
 
         binding.infoNameEdit.addTextChangedListener(
-            getTextWatcher()
+            sharedTextWatcher
         )
 
         binding.infoDateEdit.addTextChangedListener(
-            getTextWatcher()
+            sharedTextWatcher
         )
 
         binding.infoLowPriceEdit.addTextChangedListener(
-            getTextWatcher()
+            sharedTextWatcher
         )
 
         binding.infoSellerEdit.addTextChangedListener(
-            getTextWatcher()
+            sharedTextWatcher
         )
 
         binding.infoBrandSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
@@ -75,17 +92,9 @@ class InfoFragment : Fragment() {
                 updateItem()
             }
         }
-
-        return binding.root
     }
 
-    private fun getSpinnerItems() {
-        viewModel.getBrands().asLiveData().observe(viewLifecycleOwner, Observer {
-            spinnerAdapter.addAll(brandItemListToStringList(it))
-            binding.infoBrandSpinner.setSelection(getBrandIndex(viewModel.brand!!))
-        })
-    }
-
+    // get brand string list from BrandItem list
     private fun brandItemListToStringList(list : List<BrandItem>) : List<String> {
         val ret = mutableListOf<String>()
 
@@ -96,10 +105,12 @@ class InfoFragment : Fragment() {
         return ret
     }
 
+    // get index of a brand item in spinner
     private fun getBrandIndex(brand : String) : Int {
         return spinnerAdapter.getPosition(brand)
     }
 
+    // update view text with viewmodel values
     private fun setViewValues() {
         binding.infoDateEdit.setText(viewModel.date)
         binding.infoNameEdit.setText(viewModel.name)
@@ -107,16 +118,30 @@ class InfoFragment : Fragment() {
         binding.infoSellerEdit.setText(viewModel.seller)
     }
 
+    // update item on return to previous fragment
     private fun updateItem() {
+        // ensure price is sensible
+        val price : Float = if (!binding.infoLowPriceEdit.text.isNullOrEmpty()) {
+            binding.infoLowPriceEdit.text.toString().toFloat()
+        }
+        else {
+            viewModel.price     // always a sensible value (0, or previous default)
+        }
+
+        // get data from edit text views
         val name = binding.infoNameEdit.text.toString()
-        val price = binding.infoLowPriceEdit.text.toString().toFloat()
         val date = binding.infoDateEdit.text.toString()
         val seller = binding.infoSellerEdit.text.toString()
+
+        // get selected brand from spinner
         val brand = binding.infoBrandSpinner.selectedItem.toString()
+
+        // add item to back stack for update upon back
         val item = ConcreteItem(viewModel.id, name, brand, price, date, seller)
         findNavController().previousBackStackEntry?.savedStateHandle?.set("changedItem", item)
     }
 
+    // get a text watcher that will update the ConcreteItem being edited
     private fun getTextWatcher() : TextWatcher {
         return object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {

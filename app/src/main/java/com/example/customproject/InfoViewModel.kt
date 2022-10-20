@@ -10,7 +10,7 @@ class InfoViewModel(private val brandDao: BrandDao) : ViewModel() {
     var id : Int = 0
     var name : String? = null
     var brand : String? = null
-    var price : Float? = null
+    var price : Float = 0F
     var seller : String? = null
     var date : String? = null
 
