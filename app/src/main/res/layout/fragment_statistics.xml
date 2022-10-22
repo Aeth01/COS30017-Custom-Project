@@ -15,8 +15,9 @@
             android:id="@+id/statsHeader"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
             android:text="@string/graphics_card_pricing"
-            android:textAlignment="center"
             android:textSize="34sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,66 +38,77 @@
 
         <TextView
             android:id="@+id/statsNoCardsLabel"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
             android:text="@string/no_cards_added_label"
-            android:textSize="20sp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider" />
 
         <TextView
             android:id="@+id/statsLastAddedLabel"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
             android:text="@string/last_added_label"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statsNoCards" />
+
+        <TextView
+            android:id="@+id/statsAveragePriceLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:text="@string/average_price_label"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statsLastAdded" />
+
+        <TextView
+            android:id="@+id/statsNoCards"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="@string/textview_default"
             android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/statsNoCardsLabel" />
 
         <TextView
-            android:id="@+id/statsAveragePriceLabel"
-            android:layout_width="wrap_content"
+            android:id="@+id/statsLastAdded"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
-            android:text="@string/average_price_label"
+            android:gravity="center"
+            android:text="@string/textview_default"
             android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/statsLastAddedLabel" />
 
         <TextView
-            android:id="@+id/statsNoCards"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="@string/textview_default"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@+id/statsNoCardsLabel"
-            app:layout_constraintStart_toEndOf="@+id/statsNoCardsLabel"
-            app:layout_constraintTop_toTopOf="@+id/statsNoCardsLabel" />
-
-        <TextView
-            android:id="@+id/statsLastAdded"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/textview_default"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@+id/statsLastAddedLabel"
-            app:layout_constraintStart_toStartOf="@+id/statsNoCards"
-            app:layout_constraintTop_toTopOf="@+id/statsLastAddedLabel" />
-
-        <TextView
             android:id="@+id/statsAveragePrice"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
             android:text="@string/textview_default"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@+id/statsAveragePriceLabel"
-            app:layout_constraintStart_toStartOf="@+id/statsNoCards"
-            app:layout_constraintTop_toTopOf="@+id/statsAveragePriceLabel" />
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statsAveragePriceLabel" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

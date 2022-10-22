@@ -13,7 +13,7 @@
     <fragment
         android:id="@+id/nav_select_item"
         android:name="com.example.customproject.ViewItemsFragment"
-        android:label="Select Item"
+        android:label="View Items"
         tools:layout="@layout/fragment_view_items" >
         <action
             android:id="@+id/action_nav_select_to_infoFragment"
@@ -36,11 +36,6 @@
         android:label="Item Information"
         tools:layout="@layout/fragment_info">
 
-<!--        <argument-->
-<!--            android:name="item"-->
-<!--            android:defaultValue="@null"-->
-<!--            app:nullable="true"-->
-<!--            app:argType="com.example.customproject.database.ConcreteItem"/>-->
         <argument
             android:name="item"
             app:argType="com.example.customproject.database.ConcreteItem"
@@ -53,7 +48,7 @@
     <fragment
         android:id="@+id/addItemFragment"
         android:name="com.example.customproject.AddItemFragment"
-        android:label="fragment_add_item"
+        android:label="Add New Item"
         tools:layout="@layout/fragment_add_item" >
         <action
             android:id="@+id/action_addItemFragment_to_nav_select"
@@ -62,7 +57,7 @@
     <fragment
         android:id="@+id/nav_select_brand"
         android:name="com.example.customproject.ViewBrandFragment"
-        android:label="fragment_view_brand"
+        android:label="View Brands"
         tools:layout="@layout/fragment_view_brand" >
         <action
             android:id="@+id/action_nav_select_brand_to_addBrandFragment"
@@ -74,7 +69,7 @@
     <fragment
         android:id="@+id/addBrandFragment"
         android:name="com.example.customproject.AddBrandFragment"
-        android:label="fragment_add_brand"
+        android:label="Add New Brand"
         tools:layout="@layout/fragment_add_brand" >
         <action
             android:id="@+id/action_addBrandFragment_to_nav_select_brand"

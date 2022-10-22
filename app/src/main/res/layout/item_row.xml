@@ -13,6 +13,7 @@
         android:gravity="start|center_vertical"
         android:text="@string/textview_default"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/itemRowDate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

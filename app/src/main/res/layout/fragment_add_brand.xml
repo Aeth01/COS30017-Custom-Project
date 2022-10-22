@@ -34,13 +34,15 @@
             app:textAllCaps="false" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/addBrandNameLabel"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:text="Name:"
             android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider5" />
 
@@ -53,10 +55,10 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name"
-            app:layout_constraintBottom_toBottomOf="@+id/textView2"
+            app:layout_constraintBottom_toBottomOf="@+id/addBrandNameLabel"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
-            app:layout_constraintTop_toTopOf="@+id/textView2"
+            app:layout_constraintStart_toEndOf="@+id/addBrandNameLabel"
+            app:layout_constraintTop_toTopOf="@+id/addBrandNameLabel"
             tools:ignore="TouchTargetSizeCheck" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -68,7 +70,8 @@
             android:clickable="true"
             android:src="@drawable/ic_add_fill0_wght400_grad0_opsz48"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
