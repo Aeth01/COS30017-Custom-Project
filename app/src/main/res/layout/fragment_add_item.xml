@@ -25,7 +25,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Add New Item"
+            android:text="@string/AddItemHeader"
             android:textSize="34sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:text="Name:"
+            android:text="@string/itemNameLabel"
             android:textSize="20sp"
             android:gravity="center"
             android:textStyle="bold"
@@ -47,11 +47,11 @@
             app:layout_constraintTop_toBottomOf="@+id/divider4" />
 
         <TextView
-            android:id="@+id/adddItemBrandLabel"
+            android:id="@+id/addItemBrandLabel"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
-            android:text="Brand:"
+            android:text="@string/itemBrandLabel"
             android:textSize="20sp"
             android:gravity="center"
             android:textStyle="bold"
@@ -63,19 +63,19 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
-            android:text="Price:"
+            android:text="@string/itemPriceLabel"
             android:textSize="20sp"
             android:gravity="center"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/adddItemBrandLabel"
-            app:layout_constraintTop_toBottomOf="@+id/adddItemBrandLabel" />
+            app:layout_constraintStart_toStartOf="@+id/addItemBrandLabel"
+            app:layout_constraintTop_toBottomOf="@+id/addItemBrandLabel" />
 
         <TextView
             android:id="@+id/addItemDateLabel"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
-            android:text="Date:"
+            android:text="@string/itemDateLabel"
             android:textSize="20sp"
             android:gravity="center"
             android:textStyle="bold"
@@ -87,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
-            android:text="Seller:"
+            android:text="@string/itemSellerLabel"
             android:textSize="20sp"
             android:gravity="center"
             android:textStyle="bold"
@@ -102,12 +102,13 @@
             android:layout_marginEnd="10dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:text="@string/itemNameDefault"
             app:layout_constraintBottom_toBottomOf="@+id/addItemNameLabel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/addItemNameLabel"
             app:layout_constraintTop_toTopOf="@+id/addItemNameLabel"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="LabelFor,TouchTargetSizeCheck"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/addItemSeller"
@@ -115,12 +116,13 @@
             android:layout_height="0dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Seller"
+            android:text="@string/itemSellerDefault"
             app:layout_constraintBottom_toBottomOf="@+id/addItemSellerLabel"
             app:layout_constraintEnd_toEndOf="@+id/addItemName"
             app:layout_constraintStart_toStartOf="@+id/addItemName"
             app:layout_constraintTop_toTopOf="@+id/addItemSellerLabel"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="LabelFor,TouchTargetSizeCheck"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/addItemDate"
@@ -128,13 +130,14 @@
             android:layout_height="0dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Date"
+            android:text="@string/itemDateDefault"
             app:layout_constraintBottom_toBottomOf="@+id/addItemDateLabel"
             app:layout_constraintEnd_toEndOf="@+id/addItemName"
             app:layout_constraintStart_toStartOf="@+id/addItemName"
             app:layout_constraintTop_toTopOf="@+id/addItemDateLabel"
             app:layout_constraintVertical_bias="1.0"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="LabelFor,TextFields,TouchTargetSizeCheck"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/addItemPrice"
@@ -142,13 +145,14 @@
             android:layout_height="0dp"
             android:ems="10"
             android:inputType="number"
-            android:text="0.0"
+            android:text="@string/itemPriceDefault"
             app:layout_constraintBottom_toBottomOf="@+id/addItemPriceLabel"
             app:layout_constraintEnd_toEndOf="@+id/addItemName"
             app:layout_constraintStart_toStartOf="@+id/addItemName"
             app:layout_constraintTop_toTopOf="@+id/addItemPriceLabel"
             app:layout_constraintVertical_bias="0.0"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="LabelFor,TouchTargetSizeCheck"
+            android:importantForAutofill="no" />
 
         <Spinner
             android:id="@+id/addItemBrand"
@@ -156,10 +160,10 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/adddItemBrandLabel"
+            app:layout_constraintBottom_toBottomOf="@+id/addItemBrandLabel"
             app:layout_constraintEnd_toEndOf="@+id/addItemName"
             app:layout_constraintStart_toStartOf="@+id/addItemName"
-            app:layout_constraintTop_toTopOf="@+id/adddItemBrandLabel"
+            app:layout_constraintTop_toTopOf="@+id/addItemBrandLabel"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -171,7 +175,9 @@
             android:clickable="true"
             android:src="@drawable/ic_add_fill0_wght400_grad0_opsz48"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="@string/addItemButtonDescription"
+            android:focusable="true" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

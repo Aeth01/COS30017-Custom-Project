@@ -25,7 +25,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Add New Brand"
+            android:text="@string/AddBrandHeader"
             android:textSize="34sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:text="Name:"
+            android:text="@string/BrandNameLabel"
             android:textSize="20sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -54,12 +54,14 @@
             android:layout_marginEnd="10dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:text="@string/BrandNameDefault"
+            android:hint="@string/BrandNameHint"
             app:layout_constraintBottom_toBottomOf="@+id/addBrandNameLabel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/addBrandNameLabel"
             app:layout_constraintTop_toTopOf="@+id/addBrandNameLabel"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            android:importantForAutofill="no" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAddBrandItem"
@@ -71,7 +73,9 @@
             android:src="@drawable/ic_add_fill0_wght400_grad0_opsz48"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:contentDescription="@string/addBrandButtonDescription"
+            android:focusable="true" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

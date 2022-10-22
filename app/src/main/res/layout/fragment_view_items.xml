@@ -14,7 +14,7 @@
             android:id="@+id/viewItemHeader"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Select by Item"
+            android:text="@string/viewItemHeader"
             android:gravity="center"
             android:textSize="34sp"
             android:textStyle="bold"
@@ -56,7 +56,9 @@
             android:src="@drawable/ic_add_fill0_wght400_grad0_opsz48"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:focusable="true"
+            android:contentDescription="@string/addItemButtonDescription" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabDeleteBrandItem"
@@ -68,7 +70,9 @@
             app:backgroundTint="@color/teal_200_compliment"
             app:layout_constraintBottom_toTopOf="@+id/fabAddItem"
             app:layout_constraintEnd_toEndOf="@+id/fabAddItem"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:focusable="true"
+            android:contentDescription="@string/deleteBrandButtonDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

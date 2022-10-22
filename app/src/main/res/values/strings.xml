@@ -13,4 +13,26 @@
     <string name="menuViewAll">View All Items</string>
     <string name="menuViewBrands">View Brands</string>
     <string name="menuHome">Home</string>
+    <string name="AddBrandHeader">Add New Brand</string>
+    <string name="BrandNameLabel">Name:</string>
+    <string name="BrandNameDefault">Brand Name</string>
+    <string name="BrandNameHint">Name of brand.</string>
+    <string name="addBrandButtonDescription">Add brand button.</string>
+    <string name="AddItemHeader">Add New Item</string>
+    <string name="itemNameLabel">Name:</string>
+    <string name="itemBrandLabel">Brand:</string>
+    <string name="itemPriceLabel">Price:</string>
+    <string name="itemDateLabel">Date:</string>
+    <string name="itemSellerLabel">Seller:</string>
+    <string name="itemNameDefault">Name</string>
+    <string name="itemSellerDefault">Seller</string>
+    <string name="itemDateDefault">01/01/2000</string>
+    <string name="itemPriceDefault">0.0</string>
+    <string name="addItemButtonDescription">Add item button.</string>
+    <string name="deleteItemButtonDescription">Delete item button.</string>
+    <string name="itemPriceHint">Lowest price recorded for item.</string>
+    <string name="viewBrandHeader">Select Brand</string>
+    <string name="viewItemHeader">Select by Item</string>
+    <string name="deleteBrandButtonDescription">Delete brand button.</string>
+    <string name="dollarSymbol">$</string>
 </resources>
