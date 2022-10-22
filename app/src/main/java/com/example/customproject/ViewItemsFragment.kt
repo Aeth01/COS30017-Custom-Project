@@ -1,6 +1,5 @@
 package com.example.customproject
 
-import android.content.ClipData
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,16 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.customproject.database.BrandItem
 import com.example.customproject.database.ConcreteItem
 import com.example.customproject.databinding.FragmentViewItemsBinding
-import kotlinx.coroutines.flow.count
-import java.util.*
+import kotlinx.coroutines.launch
 
 class ViewItemsFragment : Fragment() {
     private lateinit var binding : FragmentViewItemsBinding
@@ -26,46 +24,49 @@ class ViewItemsFragment : Fragment() {
 
     private val viewModel : ViewItemsViewModel by activityViewModels {
         ViewItemsViewModelFactory(
-            (activity?.application as DatabaseApplication).database.itemDao()
+            (activity?.application as DatabaseApplication).database.itemDao(),
+            (activity?.application as DatabaseApplication).database.brandDao()
         )
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentViewItemsBinding.inflate(inflater, container, false)
 
+        // populate recycler view
         val itemListView = binding.viewItemList
         linearLayoutManager = LinearLayoutManager(context)
         itemListView.layoutManager = linearLayoutManager
 
-        adapter = ViewItemsAdapter() {
+        adapter = ViewItemsAdapter {
             openItem(it)
         }
         itemListView.adapter = adapter
 
+        // get brand and populate rows
         var brand : String? = null
-        ViewItemsFragmentArgs.fromBundle(requireArguments()).brandItem?.let {
-            brand = it.brandName
+        ViewItemsFragmentArgs.fromBundle(requireArguments()).brandItem?.let { brandItem ->
+            brand = brandItem.brandName
+            val databaseData = viewModel.getByBrand(brand!!).asLiveData()
+            databaseData.observe(viewLifecycleOwner) {
+                adapter.updateData(it)
+            }
         }
 
-        val databaseData = if (brand.isNullOrEmpty()) {
-            viewModel.getRows().asLiveData()
-        }
-        else {
-            viewModel.getByBrand(brand!!).asLiveData()
-        }
-
-        databaseData.observe(viewLifecycleOwner, Observer {
-            adapter.updateData(it)
-        })
-
+        // go to add item fragment
         binding.fabAddItem.setOnClickListener{
             val action = ViewItemsFragmentDirections.actionNavSelectToAddItemFragment()
             NavHostFragment.findNavController(this).navigate(action)
         }
 
+        // delete current brand
+        binding.fabDeleteBrandItem.setOnClickListener {
+            deleteBrand(BrandItem(brand!!))
+        }
+
+        // update item if changed item exists
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<ConcreteItem>("changedItem")?.observe(viewLifecycleOwner) {
             viewModel.updateById(it.itemId, it.name, it.brand, it.price, it.date, it.seller)
             Log.e("openItem", "Updated item to $it")
@@ -74,12 +75,23 @@ class ViewItemsFragment : Fragment() {
         return binding.root
     }
 
+    // open info fragment for corresponding item
     private fun openItem(item : ConcreteItem) {
         viewModel.clickedIndex = item.itemId
         Log.e("openItem", "clickedIndex = ${item.itemId}")
 
         val action = ViewItemsFragmentDirections.actionNavSelectToInfoFragment()
         action.item = item
+        NavHostFragment.findNavController(this).navigate(action)
+    }
+
+    // delete brand item and return to view brands
+    private fun deleteBrand(item : BrandItem) {
+        lifecycleScope.launch{
+            viewModel.deleteBrand(item)
+        }
+
+        val action = ViewItemsFragmentDirections.actionNavSelectItemToNavSelectBrand()
         NavHostFragment.findNavController(this).navigate(action)
     }
 }

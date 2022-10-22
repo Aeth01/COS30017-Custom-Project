@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // manually set toolbar with drawer navigation
         setSupportActionBar(binding.appBarMain.toolbar)
 
         val drawerLayout = binding.drawerLayout
@@ -28,12 +29,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home, R.id.nav_select_brand
             ), drawerLayout
         )
-//        appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-        // init database
-//        (this.application as DatabaseApplication).database.itemDao().getAll()
     }
 
     override fun onSupportNavigateUp() : Boolean {

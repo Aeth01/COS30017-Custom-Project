@@ -6,6 +6,10 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
+import java.lang.NumberFormatException
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Parcelize
 @Entity(
@@ -14,7 +18,7 @@ import kotlinx.parcelize.Parcelize
         entity = BrandItem::class,
         parentColumns = arrayOf("brandName"),
         childColumns = arrayOf("brandName"),
-        onDelete = ForeignKey.SET_NULL,
+        onDelete = ForeignKey.CASCADE,
         onUpdate = ForeignKey.CASCADE
     )]
 )
@@ -25,4 +29,27 @@ data class ConcreteItem(
     @ColumnInfo(name="price") val price : Float,
     @ColumnInfo(name="date") val date : String,
     @ColumnInfo(name="seller") val seller : String
-) : Parcelable
+) : Parcelable {
+    companion object {
+        // check date valid
+        @Throws(ParseException::class)
+        fun validDate(date : String) : Boolean {
+            // if parse successful, return true. Else throw parse exception
+            val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+            sdf.isLenient = false
+            sdf.parse(date)
+
+            return true
+        }
+
+        // check price is valid
+        @Throws(NumberFormatException::class)
+        fun validPrice(price : String) : Boolean {
+            if (price.toFloat() <= 0F) {
+                throw NumberFormatException()
+            }
+
+            return true
+        }
+    }
+}

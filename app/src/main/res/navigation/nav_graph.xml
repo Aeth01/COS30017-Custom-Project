@@ -46,6 +46,9 @@
             app:argType="com.example.customproject.database.ConcreteItem"
             app:nullable="true"
             android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_infoFragment_to_nav_select_item"
+            app:destination="@id/nav_select_item" />
     </fragment>
     <fragment
         android:id="@+id/addItemFragment"

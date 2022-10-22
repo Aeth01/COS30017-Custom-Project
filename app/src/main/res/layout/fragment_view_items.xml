@@ -53,9 +53,21 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:clickable="true"
-            android:src="@drawable/tables"
+            android:src="@drawable/ic_add_fill0_wght400_grad0_opsz48"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabDeleteBrandItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:clickable="true"
+            android:src="@drawable/ic_remove_fill0_wght400_grad0_opsz48"
+            app:backgroundTint="@color/teal_200_compliment"
+            app:layout_constraintBottom_toTopOf="@+id/fabAddItem"
+            app:layout_constraintEnd_toEndOf="@+id/fabAddItem"
             tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

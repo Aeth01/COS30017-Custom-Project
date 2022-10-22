@@ -1,5 +1,6 @@
 package com.example.customproject
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,8 @@ class ViewItemsAdapter(private val listener : (ConcreteItem) -> Unit) : Recycler
         holder.bind(item)
     }
 
+    // update data
+    @SuppressLint("NotifyDataSetChanged")
     fun updateData(newData : List<ConcreteItem>) {
         data.clear()
         data.addAll(newData)
@@ -50,6 +53,7 @@ class ViewItemsAdapter(private val listener : (ConcreteItem) -> Unit) : Recycler
             }
         }
 
+        // use alternative background row colours
         fun setBackgroundColour(position : Int) {
             if (position % 2 == 0) {
                 v.setBackgroundColor(ResourcesCompat.getColor(v.resources, R.color.primaryRowColor, v.context.theme))

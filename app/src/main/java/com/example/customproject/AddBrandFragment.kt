@@ -12,7 +12,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import com.example.customproject.database.BrandItem
 import com.example.customproject.databinding.FragmentAddBrandBinding
-import com.example.customproject.databinding.FragmentAddItemBinding
 import kotlinx.coroutines.*
 
 class AddBrandFragment : Fragment() {
@@ -22,13 +21,13 @@ class AddBrandFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentAddBrandBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[AddBrandViewModel::class.java]
 
         // add brand to database on submit
-        binding.addBrandSubmit.setOnClickListener{
+        binding.fabAddBrandItem.setOnClickListener{
             addBrand()
         }
 
@@ -44,10 +43,11 @@ class AddBrandFragment : Fragment() {
 
         Log.e("AddBrand", "name=$name")
 
+        // add brand if it is not empty
         if (name.isNotEmpty()) {
             this.lifecycleScope.launch {
                 (activity?.application as DatabaseApplication).database.brandDao()
-                    .insertAll(BrandItem(brandName = "$name"))
+                    .insertAll(BrandItem(brandName = name))
             }
             Toast.makeText(context, "Added $name to brands.", Toast.LENGTH_SHORT).show()
             returnToViewBrands()
@@ -65,11 +65,13 @@ class AddBrandFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
+        // save brand name on pause
         viewModel.brandName = binding.addBrandName.text.toString()
     }
 
     override fun onResume() {
         super.onResume()
+        // repopulate brand name on resume
         binding.addBrandName.setText(viewModel.brandName)
     }
 }

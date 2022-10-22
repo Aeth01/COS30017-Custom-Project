@@ -53,7 +53,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:clickable="true"
-            android:src="@drawable/tables"
+            android:src="@drawable/ic_add_fill0_wght400_grad0_opsz48"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />

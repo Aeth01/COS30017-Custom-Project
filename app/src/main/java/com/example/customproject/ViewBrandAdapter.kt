@@ -1,5 +1,6 @@
 package com.example.customproject
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,7 +8,6 @@ import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.customproject.database.BrandItem
-import com.example.customproject.database.ConcreteItem
 
 class ViewBrandAdapter(private val listener : (BrandItem) -> Unit) : RecyclerView.Adapter<ViewBrandAdapter.Holder>() {
     val data = mutableListOf<BrandItem>()
@@ -30,6 +30,8 @@ class ViewBrandAdapter(private val listener : (BrandItem) -> Unit) : RecyclerVie
         holder.bind(item)
     }
 
+    // update date
+    @SuppressLint("NotifyDataSetChanged")
     fun updateData(newData : List<BrandItem>) {
         data.clear()
         data.addAll(newData)
@@ -47,6 +49,7 @@ class ViewBrandAdapter(private val listener : (BrandItem) -> Unit) : RecyclerVie
             }
         }
 
+        // use alternating row background colours
         fun setBackgroundColour(position : Int) {
             if (position % 2 == 0) {
                 v.setBackgroundColor(ResourcesCompat.getColor(v.resources, R.color.primaryRowColor, v.context.theme))

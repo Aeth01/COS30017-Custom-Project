@@ -1,3 +1,4 @@
+@file:Suppress("NAME_SHADOWING")
 package com.example.customproject
 
 import android.os.Bundle
@@ -7,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,48 +29,52 @@ class ViewBrandFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentViewBrandBinding.inflate(inflater, container, false)
 
+        // populate recycler view with brand items
         val itemListView = binding.viewBrandList
         linearLayoutManager = LinearLayoutManager(context)
         itemListView.layoutManager = linearLayoutManager
 
         data = initData()
 
-        adapter = ViewBrandAdapter() {
+        adapter = ViewBrandAdapter {
             openBrand(it)
         }
         itemListView.adapter = adapter
 
+        viewModel.getRows().asLiveData().observe(viewLifecycleOwner) {
+            adapter.updateData(it)
+        }
+
+        // go to add brand on click
         binding.fabAddBrand.setOnClickListener{
             val action = ViewBrandFragmentDirections.actionNavSelectBrandToAddBrandFragment()
             NavHostFragment.findNavController(this).navigate(action)
         }
 
-        viewModel.getRows().asLiveData().observe(viewLifecycleOwner, Observer {
-            adapter.updateData(it)
-        })
-
         return binding.root
     }
 
+    // return data to show
     private fun initData() : MutableList<BrandItem> {
         val ret = mutableListOf<BrandItem>()
 
         val rows : LiveData<List<BrandItem>> = viewModel.getRows().asLiveData()
-        rows.observe(viewLifecycleOwner, Observer{ rows ->
+        rows.observe(viewLifecycleOwner) { rows ->
             rows?.let {
-                for(row in it) {
+                for (row in it) {
                     data.add(BrandItem(row.brandName))
                 }
             }
-        })
+        }
 
         return ret
     }
 
+    // go to view items page for brand
     private fun openBrand(item : BrandItem) {
         val action = ViewBrandFragmentDirections.actionNavSelectBrandToNavSelectItem2()
         action.brandItem = item

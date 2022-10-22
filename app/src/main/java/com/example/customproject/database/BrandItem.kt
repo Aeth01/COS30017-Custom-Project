@@ -1,7 +1,6 @@
 package com.example.customproject.database
 
 import android.os.Parcelable
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
@@ -13,6 +12,7 @@ data class BrandItem(
 ) : Parcelable
 {
     companion object {
+        // get a list of brand items
         fun brandItemListToStringList(list : List<BrandItem>) : List<String> {
             val ret = mutableListOf<String>()
 

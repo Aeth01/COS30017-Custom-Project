@@ -1,26 +1,22 @@
 package com.example.customproject
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.room.ColumnInfo
-import androidx.room.PrimaryKey
 import com.example.customproject.database.BrandItem
 import com.example.customproject.database.ConcreteItem
 import com.example.customproject.databinding.FragmentInfoBinding
+import kotlinx.coroutines.launch
 
 class InfoFragment : Fragment() {
     private lateinit var binding : FragmentInfoBinding
@@ -28,14 +24,15 @@ class InfoFragment : Fragment() {
 
     private val viewModel : InfoViewModel by activityViewModels {
         InfoViewModelFactory(
-            (activity?.application as DatabaseApplication).database.brandDao()
+            (activity?.application as DatabaseApplication).database.brandDao(),
+            (activity?.application as DatabaseApplication).database.itemDao()
         )
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentInfoBinding.inflate(inflater, container, false)
 
@@ -54,15 +51,20 @@ class InfoFragment : Fragment() {
 
         setTextChangedListeners()
 
+        // delete current item
+        binding.fabDeleteConcreteItem.setOnClickListener{
+            deleteItem()
+        }
+
         return binding.root
     }
 
     // populate spinner with brand names from database
     private fun populateSpinnerItems() {
-        viewModel.getBrands().asLiveData().observe(viewLifecycleOwner, Observer {
+        viewModel.getBrands().asLiveData().observe(viewLifecycleOwner) {
             spinnerAdapter.addAll(BrandItem.brandItemListToStringList(it))
             binding.infoBrandSpinner.setSelection(getBrandIndex(viewModel.brand!!))
-        })
+        }
     }
 
     // set text changed listeners for views
@@ -94,23 +96,12 @@ class InfoFragment : Fragment() {
         }
     }
 
-    // get brand string list from BrandItem list
-    private fun brandItemListToStringList(list : List<BrandItem>) : List<String> {
-        val ret = mutableListOf<String>()
-
-        for(item in list) {
-            ret.add(item.brandName)
-        }
-
-        return ret
-    }
-
     // get index of a brand item in spinner
     private fun getBrandIndex(brand : String) : Int {
         return spinnerAdapter.getPosition(brand)
     }
 
-    // update view text with viewmodel values
+    // update view text with viewModel values
     private fun setViewValues() {
         binding.infoDateEdit.setText(viewModel.date)
         binding.infoNameEdit.setText(viewModel.name)
@@ -134,11 +125,26 @@ class InfoFragment : Fragment() {
         val seller = binding.infoSellerEdit.text.toString()
 
         // get selected brand from spinner
-        val brand = binding.infoBrandSpinner.selectedItem.toString()
+        val brand = binding.infoBrandSpinner.selectedItem?.toString()
 
-        // add item to back stack for update upon back
-        val item = ConcreteItem(viewModel.id, name, brand, price, date, seller)
-        findNavController().previousBackStackEntry?.savedStateHandle?.set("changedItem", item)
+        if (brand != null) {
+            // add item to back stack for update upon back
+            val item = ConcreteItem(viewModel.id, name, brand, price, date, seller)
+            findNavController().previousBackStackEntry?.savedStateHandle?.set("changedItem", item)
+        }
+    }
+
+    // delete item
+    private fun deleteItem() {
+        // remove update mechanism
+        findNavController().previousBackStackEntry?.savedStateHandle?.remove<ConcreteItem>("changedItem")
+
+        lifecycleScope.launch{
+            viewModel.deleteItem(viewModel.itemRef!!)
+        }
+
+        // navigate back to previous
+        findNavController().popBackStack()
     }
 
     // get a text watcher that will update the ConcreteItem being edited
