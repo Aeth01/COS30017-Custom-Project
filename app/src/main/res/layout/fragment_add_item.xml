@@ -173,11 +173,12 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:clickable="true"
+            android:contentDescription="@string/addItemButtonDescription"
+            android:focusable="true"
             android:src="@drawable/ic_add_fill0_wght400_grad0_opsz48"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:contentDescription="@string/addItemButtonDescription"
-            android:focusable="true" />
+            tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

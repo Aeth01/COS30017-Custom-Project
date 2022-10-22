@@ -11,7 +11,6 @@ import com.example.customproject.database.ConcreteItem
 import com.example.customproject.databinding.FragmentStatisticsBinding
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.math.min
 
 class StatisticsFragment : Fragment() {
     private lateinit var data : List<ConcreteItem>
@@ -70,6 +69,6 @@ class StatisticsFragment : Fragment() {
             total += row.price
         }
 
-        return total / min(data.count(), 1)
+        return total / data.count()
     }
 }

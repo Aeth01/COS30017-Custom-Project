@@ -38,7 +38,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/infoLowPriceLabel"
             app:layout_constraintTop_toBottomOf="@+id/infoHeader"
-            tools:ignore="LabelFor,TouchTargetSizeCheck" />
+            tools:ignore="LabelFor,TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
 
         <EditText
             android:id="@+id/infoLowPriceEdit"
@@ -151,7 +151,7 @@
         <Spinner
             android:id="@+id/infoBrandSpinner"
             style="@style/Widget.AppCompat.Spinner.Underlined"
-            android:layout_width="261dp"
+            android:layout_width="0dp"
             android:layout_height="43dp"
             android:layout_marginTop="10dp"
             app:barrierMargin="@dimen/material_emphasis_medium"
@@ -167,13 +167,13 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:clickable="true"
+            android:contentDescription="@string/deleteItemButtonDescription"
+            android:focusable="true"
             android:src="@drawable/ic_remove_fill0_wght400_grad0_opsz48"
             app:backgroundTint="@color/teal_200_compliment"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="SpeakableTextPresentCheck"
-            android:focusable="true"
-            android:contentDescription="@string/deleteItemButtonDescription" />
+            tools:ignore="SpeakableTextPresentCheck,RedundantDescriptionCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
