@@ -17,6 +17,7 @@ import com.example.customproject.database.BrandItem
 import com.example.customproject.database.ConcreteItem
 import com.example.customproject.databinding.FragmentInfoBinding
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class InfoFragment : Fragment() {
     private lateinit var binding : FragmentInfoBinding
@@ -121,7 +122,21 @@ class InfoFragment : Fragment() {
 
         // get data from edit text views
         val name = binding.infoNameEdit.text.toString()
-        val date = binding.infoDateEdit.text.toString()
+
+        // ensure date is valid
+        val dateString = binding.infoDateEdit.text.toString()
+        val date = try {
+            if (ConcreteItem.validDate(dateString)) {
+                dateString
+            }
+            else {
+                viewModel.date!!
+            }
+        }
+        catch(e : Exception) {
+            viewModel.date!!
+        }
+
         val seller = binding.infoSellerEdit.text.toString()
 
         // get selected brand from spinner
