@@ -8,10 +8,11 @@
     <TextView
         android:id="@+id/brandRowName"
         android:layout_width="314dp"
-        android:layout_height="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
         android:gravity="start|center_vertical"
         android:text="@string/textview_default"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

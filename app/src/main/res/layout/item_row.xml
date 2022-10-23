@@ -7,15 +7,17 @@
 
     <TextView
         android:id="@+id/itemRowName"
-        android:layout_width="314dp"
-        android:layout_height="0dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
         android:gravity="start|center_vertical"
         android:text="@string/textview_default"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/itemRowDate"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/itemRowPrice"
@@ -23,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:text="@string/textview_default"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/itemRowPriceLabel" />
 
@@ -32,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dollarSymbol"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/itemRowPrice"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textview_default"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/itemRowPrice"
         app:layout_constraintTop_toBottomOf="@+id/itemRowPrice" />
 
