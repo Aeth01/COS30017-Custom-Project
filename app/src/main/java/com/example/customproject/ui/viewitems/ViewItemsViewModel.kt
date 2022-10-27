@@ -1,9 +1,8 @@
-package com.example.customproject
+package com.example.customproject.ui.viewitems
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.customproject.database.BrandDao
-import com.example.customproject.database.BrandItem
 import com.example.customproject.database.ConcreteItem
 import com.example.customproject.database.ConcreteItemDao
 import kotlinx.coroutines.flow.Flow

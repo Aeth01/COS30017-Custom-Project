@@ -1,4 +1,4 @@
-package com.example.customproject
+package com.example.customproject.ui.viewinfo
 
 import androidx.lifecycle.ViewModel
 import com.example.customproject.database.BrandDao

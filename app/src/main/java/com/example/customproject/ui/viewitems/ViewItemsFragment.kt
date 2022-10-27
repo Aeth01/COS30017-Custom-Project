@@ -1,4 +1,4 @@
-package com.example.customproject
+package com.example.customproject.ui.viewitems
 
 import android.os.Bundle
 import android.util.Log
@@ -8,14 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.asLiveData
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.customproject.database.BrandItem
+import com.example.customproject.DatabaseApplication
 import com.example.customproject.database.ConcreteItem
 import com.example.customproject.databinding.FragmentViewItemsBinding
-import kotlinx.coroutines.launch
 
 class ViewItemsFragment : Fragment() {
     private lateinit var binding : FragmentViewItemsBinding
@@ -48,7 +46,7 @@ class ViewItemsFragment : Fragment() {
         // populate rows
         ViewItemsFragmentArgs.fromBundle(requireArguments()).brandItem?.let { brandItem ->
             val brand = brandItem.brandName
-            val databaseData = viewModel.getByBrand(brand!!).asLiveData()
+            val databaseData = viewModel.getByBrand(brand).asLiveData()
             databaseData.observe(viewLifecycleOwner) {
                 adapter.updateData(it)
             }
@@ -56,7 +54,8 @@ class ViewItemsFragment : Fragment() {
 
         // go to add item fragment
         binding.fabAddItem.setOnClickListener{
-            val action = ViewItemsFragmentDirections.actionNavSelectToAddItemFragment()
+            val action =
+                ViewItemsFragmentDirections.actionNavSelectToAddItemFragment()
             NavHostFragment.findNavController(this).navigate(action)
         }
 
@@ -74,7 +73,8 @@ class ViewItemsFragment : Fragment() {
         viewModel.clickedIndex = item.itemId
         Log.e("openItem", "clickedIndex = ${item.itemId}")
 
-        val action = ViewItemsFragmentDirections.actionNavSelectToInfoFragment()
+        val action =
+            ViewItemsFragmentDirections.actionNavSelectToInfoFragment()
         action.item = item
         NavHostFragment.findNavController(this).navigate(action)
     }

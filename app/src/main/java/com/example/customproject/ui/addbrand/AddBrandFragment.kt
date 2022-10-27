@@ -1,4 +1,4 @@
-package com.example.customproject
+package com.example.customproject.ui.addbrand
 
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
+import com.example.customproject.DatabaseApplication
 import com.example.customproject.database.BrandItem
 import com.example.customproject.databinding.FragmentAddBrandBinding
 import kotlinx.coroutines.*
@@ -59,7 +60,8 @@ class AddBrandFragment : Fragment() {
 
     // return to view brand fragment
     private fun returnToViewBrands() {
-        val action = AddBrandFragmentDirections.actionAddBrandFragmentToNavSelectBrand()
+        val action =
+            AddBrandFragmentDirections.actionAddBrandFragmentToNavSelectBrand()
         NavHostFragment.findNavController(this).navigate(action)
     }
 

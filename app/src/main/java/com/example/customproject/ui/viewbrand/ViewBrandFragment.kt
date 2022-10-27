@@ -1,5 +1,5 @@
 @file:Suppress("NAME_SHADOWING")
-package com.example.customproject
+package com.example.customproject.ui.viewbrand
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,6 +12,7 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.customproject.DatabaseApplication
 import com.example.customproject.database.BrandItem
 import com.example.customproject.databinding.FragmentViewBrandBinding
 import kotlinx.coroutines.launch
@@ -58,7 +59,8 @@ class ViewBrandFragment : Fragment() {
 
         // go to add brand on click
         binding.fabAddBrand.setOnClickListener{
-            val action = ViewBrandFragmentDirections.actionNavSelectBrandToAddBrandFragment()
+            val action =
+                ViewBrandFragmentDirections.actionNavSelectBrandToAddBrandFragment()
             NavHostFragment.findNavController(this).navigate(action)
         }
 
@@ -83,7 +85,8 @@ class ViewBrandFragment : Fragment() {
 
     // go to view items page for brand
     private fun openBrand(item : BrandItem) {
-        val action = ViewBrandFragmentDirections.actionNavSelectBrandToNavSelectItem2()
+        val action =
+            ViewBrandFragmentDirections.actionNavSelectBrandToNavSelectItem2()
         action.brandItem = item
         NavHostFragment.findNavController(this).navigate(action)
     }

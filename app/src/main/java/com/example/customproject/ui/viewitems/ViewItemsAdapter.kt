@@ -1,4 +1,4 @@
-package com.example.customproject
+package com.example.customproject.ui.viewitems
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.customproject.R
 import com.example.customproject.database.ConcreteItem
 
 class ViewItemsAdapter(private val listener : (ConcreteItem) -> Unit) : RecyclerView.Adapter<ViewItemsAdapter.Holder>() {
@@ -56,10 +57,12 @@ class ViewItemsAdapter(private val listener : (ConcreteItem) -> Unit) : Recycler
         // use alternative background row colours
         fun setBackgroundColour(position : Int) {
             if (position % 2 == 0) {
-                v.setBackgroundColor(ResourcesCompat.getColor(v.resources, R.color.primaryRowColor, v.context.theme))
+                v.setBackgroundColor(ResourcesCompat.getColor(v.resources,
+                    R.color.primaryRowColor, v.context.theme))
             }
             else {
-                v.setBackgroundColor(ResourcesCompat.getColor(v.resources, R.color.secondaryRowColor, v.context.theme))
+                v.setBackgroundColor(ResourcesCompat.getColor(v.resources,
+                    R.color.secondaryRowColor, v.context.theme))
             }
         }
     }

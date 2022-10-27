@@ -1,4 +1,4 @@
-package com.example.customproject
+package com.example.customproject.ui.additem
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

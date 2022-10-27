@@ -1,4 +1,4 @@
-package com.example.customproject
+package com.example.customproject.ui.addbrand
 
 import androidx.lifecycle.ViewModel
 

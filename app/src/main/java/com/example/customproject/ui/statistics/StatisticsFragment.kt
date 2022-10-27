@@ -1,4 +1,4 @@
-package com.example.customproject
+package com.example.customproject.ui.statistics
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.asLiveData
+import com.example.customproject.DatabaseApplication
 import com.example.customproject.database.ConcreteItem
 import com.example.customproject.databinding.FragmentStatisticsBinding
 import java.text.SimpleDateFormat

@@ -1,4 +1,4 @@
-package com.example.customproject
+package com.example.customproject.ui.additem
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
+import com.example.customproject.DatabaseApplication
 import com.example.customproject.database.BrandItem
 import com.example.customproject.database.ConcreteItem
 import com.example.customproject.databinding.FragmentAddItemBinding

@@ -1,4 +1,4 @@
-package com.example.customproject
+package com.example.customproject.ui.viewinfo
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,6 +11,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.customproject.DatabaseApplication
+import com.example.customproject.defines.UpdateFailEnum
 import com.example.customproject.database.BrandItem
 import com.example.customproject.database.ConcreteItem
 import com.example.customproject.databinding.FragmentInfoBinding
@@ -178,7 +180,7 @@ class InfoFragment : Fragment() {
 
     // ensure a field is not empty
     private fun validateNotEmpty(text : String) : Boolean {
-        return !text.isNullOrEmpty()
+        return text.isNotEmpty()
     }
 
     // delete item

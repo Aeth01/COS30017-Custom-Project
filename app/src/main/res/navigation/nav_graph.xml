@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.customproject.StatisticsFragment"
+        android:name="com.example.customproject.ui.statistics.StatisticsFragment"
         android:label="Home"
         tools:layout="@layout/fragment_statistics" />
     <fragment
         android:id="@+id/nav_select_item"
-        android:name="com.example.customproject.ViewItemsFragment"
+        android:name="com.example.customproject.ui.viewitems.ViewItemsFragment"
         android:label="View Items"
         tools:layout="@layout/fragment_view_items" >
         <action
@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
-        android:name="com.example.customproject.InfoFragment"
+        android:name="com.example.customproject.ui.viewinfo.InfoFragment"
         android:label="Item Information"
         tools:layout="@layout/fragment_info">
 
@@ -47,7 +47,7 @@
     </fragment>
     <fragment
         android:id="@+id/addItemFragment"
-        android:name="com.example.customproject.AddItemFragment"
+        android:name="com.example.customproject.ui.additem.AddItemFragment"
         android:label="Add New Item"
         tools:layout="@layout/fragment_add_item" >
         <action
@@ -56,7 +56,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_select_brand"
-        android:name="com.example.customproject.ViewBrandFragment"
+        android:name="com.example.customproject.ui.viewbrand.ViewBrandFragment"
         android:label="View Brands"
         tools:layout="@layout/fragment_view_brand" >
         <action
@@ -68,7 +68,7 @@
     </fragment>
     <fragment
         android:id="@+id/addBrandFragment"
-        android:name="com.example.customproject.AddBrandFragment"
+        android:name="com.example.customproject.ui.addbrand.AddBrandFragment"
         android:label="Add New Brand"
         tools:layout="@layout/fragment_add_brand" >
         <action
