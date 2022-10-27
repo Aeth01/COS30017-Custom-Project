@@ -60,19 +60,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck,RedundantDescriptionCheck" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabDeleteBrandItem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:clickable="true"
-            android:contentDescription="@string/deleteBrandButtonDescription"
-            android:focusable="true"
-            android:src="@drawable/ic_remove_fill0_wght400_grad0_opsz48"
-            app:backgroundTint="@color/teal_200_compliment"
-            app:layout_constraintBottom_toTopOf="@+id/fabAddItem"
-            app:layout_constraintEnd_toEndOf="@+id/fabAddItem"
-            tools:ignore="SpeakableTextPresentCheck,RedundantDescriptionCheck" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -9,7 +9,10 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.customproject.database.BrandItem
 
-class ViewBrandAdapter(private val listener : (BrandItem) -> Unit) : RecyclerView.Adapter<ViewBrandAdapter.Holder>() {
+class ViewBrandAdapter(
+        private val brandOpenListener : (BrandItem) -> Unit,
+        private val brandDeleteListener : (BrandItem) -> Unit
+) : RecyclerView.Adapter<ViewBrandAdapter.Holder>() {
     val data = mutableListOf<BrandItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -40,12 +43,17 @@ class ViewBrandAdapter(private val listener : (BrandItem) -> Unit) : RecyclerVie
 
     inner class Holder(private val v : View) : RecyclerView.ViewHolder(v) {
         private val brandName = v.findViewById<TextView>(R.id.brandRowName)
+        private val deleteButton = v.findViewById<TextView>(R.id.brandRowDelete)
 
         fun bind(item : BrandItem) {
             brandName.text = item.brandName
 
-            v.setOnClickListener{
-                listener(item)
+            brandName.setOnClickListener{
+                brandOpenListener(item)
+            }
+
+            deleteButton.setOnClickListener {
+                brandDeleteListener(item)
             }
         }
 

@@ -10,4 +10,8 @@ class ViewBrandViewModel(private val brandDao: BrandDao) : ViewModel() {
     fun getRows() : Flow<List<BrandItem>> {
         return brandDao.getAll()
     }
+
+    suspend fun deleteBrand(item : BrandItem) {
+        return brandDao.delete(item)
+    }
 }

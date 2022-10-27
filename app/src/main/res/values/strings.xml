@@ -35,4 +35,5 @@
     <string name="viewItemHeader">Select by Item</string>
     <string name="deleteBrandButtonDescription">Delete brand button.</string>
     <string name="dollarSymbol">$</string>
+    <string name="delete_button_text">Delete</string>
 </resources>

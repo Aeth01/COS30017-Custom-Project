@@ -21,8 +21,4 @@ class ViewItemsViewModel(private val itemDao: ConcreteItemDao, private val brand
             itemDao.updateById(id, name, brandId, price, date, seller)
         }
     }
-
-    suspend  fun deleteBrand(item : BrandItem) {
-        return brandDao.delete(item)
-    }
 }

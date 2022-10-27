@@ -176,12 +176,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:clickable="true"
             android:contentDescription="@string/deleteItemButtonDescription"
             android:focusable="true"
             android:src="@drawable/ic_remove_fill0_wght400_grad0_opsz48"
             app:backgroundTint="@color/teal_200_compliment"
+            app:layout_constraintBottom_toTopOf="@+id/fabSaveChanges"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="SpeakableTextPresentCheck,RedundantDescriptionCheck" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabSaveChanges"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            android:contentDescription="@string/deleteItemButtonDescription"
+            android:focusable="true"
+            android:src="@drawable/ic_save_black_24dp"
+            app:backgroundTint="@color/teal_200"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:ignore="SpeakableTextPresentCheck,RedundantDescriptionCheck" />

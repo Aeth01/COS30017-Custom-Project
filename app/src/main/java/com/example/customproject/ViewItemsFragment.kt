@@ -45,10 +45,9 @@ class ViewItemsFragment : Fragment() {
         }
         itemListView.adapter = adapter
 
-        // get brand and populate rows
-        var brand : String? = null
+        // populate rows
         ViewItemsFragmentArgs.fromBundle(requireArguments()).brandItem?.let { brandItem ->
-            brand = brandItem.brandName
+            val brand = brandItem.brandName
             val databaseData = viewModel.getByBrand(brand!!).asLiveData()
             databaseData.observe(viewLifecycleOwner) {
                 adapter.updateData(it)
@@ -59,11 +58,6 @@ class ViewItemsFragment : Fragment() {
         binding.fabAddItem.setOnClickListener{
             val action = ViewItemsFragmentDirections.actionNavSelectToAddItemFragment()
             NavHostFragment.findNavController(this).navigate(action)
-        }
-
-        // delete current brand
-        binding.fabDeleteBrandItem.setOnClickListener {
-            deleteBrand(BrandItem(brand!!))
         }
 
         // update item if changed item exists
@@ -82,16 +76,6 @@ class ViewItemsFragment : Fragment() {
 
         val action = ViewItemsFragmentDirections.actionNavSelectToInfoFragment()
         action.item = item
-        NavHostFragment.findNavController(this).navigate(action)
-    }
-
-    // delete brand item and return to view brands
-    private fun deleteBrand(item : BrandItem) {
-        lifecycleScope.launch{
-            viewModel.deleteBrand(item)
-        }
-
-        val action = ViewItemsFragmentDirections.actionNavSelectItemToNavSelectBrand()
         NavHostFragment.findNavController(this).navigate(action)
     }
 }

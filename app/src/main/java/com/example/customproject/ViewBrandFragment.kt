@@ -9,10 +9,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.customproject.database.BrandItem
 import com.example.customproject.databinding.FragmentViewBrandBinding
+import kotlinx.coroutines.launch
 
 class ViewBrandFragment : Fragment() {
     private lateinit var binding: FragmentViewBrandBinding
@@ -40,9 +42,14 @@ class ViewBrandFragment : Fragment() {
 
         data = initData()
 
-        adapter = ViewBrandAdapter {
-            openBrand(it)
-        }
+        adapter = ViewBrandAdapter(
+            brandOpenListener = {
+                openBrand(it)
+            },
+            brandDeleteListener = {
+                deleteBrand(it)
+            }
+        )
         itemListView.adapter = adapter
 
         viewModel.getRows().asLiveData().observe(viewLifecycleOwner) {
@@ -79,5 +86,11 @@ class ViewBrandFragment : Fragment() {
         val action = ViewBrandFragmentDirections.actionNavSelectBrandToNavSelectItem2()
         action.brandItem = item
         NavHostFragment.findNavController(this).navigate(action)
+    }
+
+    private fun deleteBrand(item : BrandItem) {
+        lifecycleScope.launch{
+            viewModel.deleteBrand(item)
+        }
     }
 }
