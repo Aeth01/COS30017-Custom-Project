@@ -25,7 +25,7 @@ import java.util.*
 data class ConcreteItem(
     @PrimaryKey(autoGenerate = true) val itemId : Int = 0,
     @ColumnInfo(name="item_name") val name : String,
-    @ColumnInfo(name="brandName", index = true) val brand : String = "",
+    @ColumnInfo(name="brand_name", index = true) val brand : String = "",
     @ColumnInfo(name="price") val price : Float,
     @ColumnInfo(name="date") val date : String,
     @ColumnInfo(name="seller") val seller : String

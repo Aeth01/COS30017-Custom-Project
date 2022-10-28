@@ -8,7 +8,7 @@ import com.example.customproject.database.ConcreteItemDao
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
-class ViewItemsViewModel(private val itemDao: ConcreteItemDao, private val brandDao : BrandDao) : ViewModel() {
+class ViewItemsViewModel(private val itemDao: ConcreteItemDao) : ViewModel() {
     var clickedIndex = -1
 
     fun getByBrand(brandId : String) : Flow<List<ConcreteItem>> {

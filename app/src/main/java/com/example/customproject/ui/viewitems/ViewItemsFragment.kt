@@ -22,8 +22,7 @@ class ViewItemsFragment : Fragment() {
 
     private val viewModel : ViewItemsViewModel by activityViewModels {
         ViewItemsViewModelFactory(
-            (activity?.application as DatabaseApplication).database.itemDao(),
-            (activity?.application as DatabaseApplication).database.brandDao()
+            (activity?.application as DatabaseApplication).database.itemDao()
         )
     }
 

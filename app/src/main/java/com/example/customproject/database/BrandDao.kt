@@ -9,7 +9,7 @@ interface BrandDao {
     fun getAll() : Flow<List<BrandItem>>
 
     @Query("SELECT * FROM brand_table WHERE brandName=(:name)")
-    fun getBrandByName(name : Int) : List<BrandItem>
+    fun getBrandByName(name : String) : List<BrandItem>
 
     @Query("UPDATE brand_table SET brandName=(:name) WHERE brandName=(:name)")
     suspend fun updateById(name : String)

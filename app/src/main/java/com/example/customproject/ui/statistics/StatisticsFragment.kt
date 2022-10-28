@@ -12,6 +12,7 @@ import com.example.customproject.database.ConcreteItem
 import com.example.customproject.databinding.FragmentStatisticsBinding
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.round
 
 class StatisticsFragment : Fragment() {
     private lateinit var data : List<ConcreteItem>
@@ -34,7 +35,7 @@ class StatisticsFragment : Fragment() {
             data = it
             binding.statsNoCards.text = getNumItems().toString()
             binding.statsLastAdded.text = getLatestDate()
-            binding.statsAveragePrice.text = getAveragePrice().toString()
+            binding.statsAveragePrice.text = String.format("%.2f", getAveragePrice())
         }
 
         return binding.root
