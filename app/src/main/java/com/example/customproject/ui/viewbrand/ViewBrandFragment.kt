@@ -11,10 +11,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.customproject.DatabaseApplication
 import com.example.customproject.database.BrandItem
 import com.example.customproject.databinding.FragmentViewBrandBinding
+import com.example.customproject.ui.deleteConfirmDialog.DeleteDialogFragment
 import kotlinx.coroutines.launch
 
 class ViewBrandFragment : Fragment() {
@@ -91,9 +93,10 @@ class ViewBrandFragment : Fragment() {
         NavHostFragment.findNavController(this).navigate(action)
     }
 
+    // open delete confirmation dialog
     private fun deleteBrand(item : BrandItem) {
-        lifecycleScope.launch{
-            viewModel.deleteBrand(item)
-        }
+        val action = ViewBrandFragmentDirections.actionNavSelectBrandToDeleteDialogFragment()
+        action.brand = item
+        findNavController().navigate(action)
     }
 }

@@ -65,6 +65,10 @@
         <action
             android:id="@+id/action_nav_select_brand_to_nav_select_item2"
             app:destination="@id/nav_select_item" />
+        <action
+            android:id="@+id/action_nav_select_brand_to_deleteDialogFragment"
+            app:destination="@id/deleteDialogFragment"
+            />
     </fragment>
     <fragment
         android:id="@+id/addBrandFragment"
@@ -75,4 +79,14 @@
             android:id="@+id/action_addBrandFragment_to_nav_select_brand"
             app:destination="@id/nav_select_brand" />
     </fragment>
+    <dialog
+        android:id="@+id/deleteDialogFragment"
+        android:name="com.example.customproject.ui.deleteConfirmDialog.DeleteDialogFragment"
+        android:label="DeleteDialogFragment" >
+        <argument
+            android:name="brand"
+            app:argType="com.example.customproject.database.BrandItem"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </dialog>
 </navigation>

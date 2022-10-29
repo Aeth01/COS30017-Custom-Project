@@ -17,7 +17,7 @@ import java.util.*
     foreignKeys = [ForeignKey(
         entity = BrandItem::class,
         parentColumns = arrayOf("brandName"),
-        childColumns = arrayOf("brandName"),
+        childColumns = arrayOf("brand_name"),
         onDelete = ForeignKey.CASCADE,
         onUpdate = ForeignKey.CASCADE
     )]
