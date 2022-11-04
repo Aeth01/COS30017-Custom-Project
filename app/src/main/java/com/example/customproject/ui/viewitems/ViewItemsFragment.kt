@@ -61,7 +61,7 @@ class ViewItemsFragment : Fragment() {
         // update item if changed item exists
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<ConcreteItem>("changedItem")?.observe(viewLifecycleOwner) {
             viewModel.updateById(it.itemId, it.name, it.brand, it.price, it.date, it.seller)
-            Log.e("openItem", "Updated item to $it")
+            Log.i("ViewItems", "Updated item to $it")
         }
 
         return binding.root
@@ -70,7 +70,7 @@ class ViewItemsFragment : Fragment() {
     // open info fragment for corresponding item
     private fun openItem(item : ConcreteItem) {
         viewModel.clickedIndex = item.itemId
-        Log.e("openItem", "clickedIndex = ${item.itemId}")
+        Log.i("ViewItems", "clickedIndex = ${item.itemId}")
 
         val action =
             ViewItemsFragmentDirections.actionNavSelectToInfoFragment()

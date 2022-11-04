@@ -42,7 +42,7 @@ class AddBrandFragment : Fragment() {
                     .trim()
                     .toString()
 
-        Log.e("AddBrand", "name=$name")
+        Log.i("AddBrand", "name=$name")
 
         // add brand if it is not empty
         if (name.isNotEmpty()) {
